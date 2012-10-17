@@ -4,6 +4,10 @@
 
 
 @implementation DataMatrix
+{
+    NSInteger _dimension;
+    BOOL** _data;
+}
 
 @synthesize dimension = _dimension;
 

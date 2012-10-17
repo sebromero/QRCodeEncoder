@@ -4,10 +4,6 @@
 
 
 @interface DataMatrix : NSObject
-{
-    NSInteger _dimension;
-    BOOL** _data;
-}
 
 @property (readonly,nonatomic) NSInteger dimension;
 

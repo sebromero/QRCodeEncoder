@@ -1947,7 +1947,7 @@ static NSInteger nIndicatorLenKanji[]	   = { 8, 10, 12};
 		}
 	}
 
-	nPenalty += (abs(50 - ((nCount * 100) / (m_nSymbleSize * m_nSymbleSize))) / 5) * 10;
+	nPenalty += (ABS(50 - ((nCount * 100) / (m_nSymbleSize * m_nSymbleSize))) / 5) * 10;
 
 	return nPenalty;
 }

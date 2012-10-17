@@ -53,7 +53,7 @@
 {
      CQR_Encode* encoder = [[CQR_Encode alloc] init];
     [encoder EncodeData:ecLevel nVersion:version bAutoExtent:YES nMaskingNo:-1 lpsSource:cstring ncSource:0];
-    int dimension = encoder->m_nSymbleSize;
+    NSInteger dimension = encoder->m_nSymbleSize;
     DataMatrix* matrix = [[DataMatrix alloc] initWith:dimension];
     for (int y=0; y<dimension; y++) {
         for (int x=0; x<dimension; x++) {
@@ -68,7 +68,7 @@
 
 + (DataMatrix*)encodeWithECLevel:(int)ecLevel version:(int)version string:(NSString *)string AESPassphrase:(NSString*)AESPassphrase {
     NSData* encryptedString = [QREncoder AESEncryptString:string withPassphrase:AESPassphrase];
-    const unsigned int len = [encryptedString length];
+    const NSUInteger len = [encryptedString length];
     char cstring[len + 1];
     bzero(cstring, len + 1);
     [encryptedString getBytes:cstring length:len];
@@ -89,43 +89,43 @@
     const int rawDataSize = imageDimension * imageDimension * BYTES_PER_PIXEL;
     unsigned char* rawData = (unsigned char*)malloc(rawDataSize);
     
-    int matrixDimension = [matrix dimension];
-    int pixelPerDot = imageDimension / matrixDimension;
-    int offsetTopAndLeft = (int)((imageDimension - pixelPerDot * matrixDimension) / 2);
-    int offsetBottomAndRight = (imageDimension - pixelPerDot * matrixDimension - offsetTopAndLeft);
+    NSInteger matrixDimension = [matrix dimension];
+    NSInteger pixelPerDot = imageDimension / matrixDimension;
+    NSInteger offsetTopAndLeft = (int)((imageDimension - pixelPerDot * matrixDimension) / 2);
+    NSInteger offsetBottomAndRight = (imageDimension - pixelPerDot * matrixDimension - offsetTopAndLeft);
     
     // alpha, blue, green, red
     const uint32_t white = 0xFFFFFFFF, black = 0xFF000000, transp = 0x00FFFFFF;
     
     uint32_t *ptrData = (uint32_t *)rawData;
     // top offset
-    for(int c=offsetTopAndLeft*imageDimension; c>0; c--)
+    for(NSInteger c=offsetTopAndLeft*imageDimension; c>0; c--)
         *(ptrData++) = transp;
     
     for(int my=0; my<matrixDimension; my++) {
         uint32_t *ptrDataSouce = ptrData; // start of the row we will copy
         // left offset
-        for(int c=offsetTopAndLeft; c>0; c--)
+        for(NSInteger c=offsetTopAndLeft; c>0; c--)
             *(ptrData++) = transp;
         
-        for(int mx=0; mx<matrixDimension; mx++) {
+        for(NSInteger mx=0; mx<matrixDimension; mx++) {
             uint32_t clr = [matrix valueAt:mx y:my] ? black : white;
             // draw one pixel line of data
-            for(int c=pixelPerDot; c>0; c--)
+            for(NSInteger c=pixelPerDot; c>0; c--)
                 *(ptrData++) = clr;
         }
         
         // right offset
-        for(int c=offsetBottomAndRight; c>0; c--)
+        for(NSInteger c=offsetBottomAndRight; c>0; c--)
             *(ptrData++) = transp;
         
         // then copy that row pixelPerDot-1 times
-        for(int c=(pixelPerDot-1)*imageDimension; c>0; c--)
+        for(NSInteger c=(pixelPerDot-1)*imageDimension; c>0; c--)
             *(ptrData++) = *(ptrDataSouce++);
     }
     
     // bottom offset
-    for(int c=offsetBottomAndRight*imageDimension; c>0; c--)
+    for(NSInteger c=offsetBottomAndRight*imageDimension; c>0; c--)
         *(ptrData++) = transp;
     
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL,
