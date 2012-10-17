@@ -14,7 +14,8 @@
 		6E9A295A162EC87C004D8EA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9A2959162EC87C004D8EA2 /* AppDelegate.m */; };
 		6E9A295D162EC87C004D8EA2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E9A295B162EC87C004D8EA2 /* MainMenu.xib */; };
 		6E9A2973162EC8DA004D8EA2 /* QRCodeEncoder.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 6E9A2972162EC8DA004D8EA2 /* QRCodeEncoder.xcodeproj */; };
-		6E9A2987162EC919004D8EA2 /* QRCodeEncoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9A2981162EC8F8004D8EA2 /* QRCodeEncoder.framework */; };
+		6E9A29AE162EE75C004D8EA2 /* QRCodeEncoder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6E9A2981162EC8F8004D8EA2 /* QRCodeEncoder.framework */; };
+		6E9A29AF162EEA9D004D8EA2 /* QRCodeEncoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9A2981162EC8F8004D8EA2 /* QRCodeEncoder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6E9A29AD162EE750004D8EA2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6E9A29AE162EE75C004D8EA2 /* QRCodeEncoder.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6E9A2942162EC87C004D8EA2 /* QRCodeEncoderExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeEncoderExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E9A2946162EC87C004D8EA2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -64,7 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E9A2947162EC87C004D8EA2 /* Cocoa.framework in Frameworks */,
-				6E9A2987162EC919004D8EA2 /* QRCodeEncoder.framework in Frameworks */,
+				6E9A29AF162EEA9D004D8EA2 /* QRCodeEncoder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +164,7 @@
 				6E9A293E162EC87C004D8EA2 /* Sources */,
 				6E9A293F162EC87C004D8EA2 /* Frameworks */,
 				6E9A2940162EC87C004D8EA2 /* Resources */,
+				6E9A29AD162EE750004D8EA2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -332,6 +347,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QRCodeEncoderExample/QRCodeEncoderExample-Prefix.pch";
 				INFOPLIST_FILE = "QRCodeEncoderExample/QRCodeEncoderExample-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -344,6 +360,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QRCodeEncoderExample/QRCodeEncoderExample-Prefix.pch";
 				INFOPLIST_FILE = "QRCodeEncoderExample/QRCodeEncoderExample-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
